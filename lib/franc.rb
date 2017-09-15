@@ -2,5 +2,5 @@
 
 require 'money'
 
-class Dollar < Money
+class Franc < Money
 end
