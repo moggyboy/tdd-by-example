@@ -8,8 +8,8 @@ describe Dollar do
 
   describe '#times' do
     specify do
-      expect(dollar.times(2).amount).to eq 10
-      expect(dollar.times(3).amount).to eq 15
+      expect(dollar.times(2)).to eq described_class.new(10)
+      expect(dollar.times(3)).to eq described_class.new(15)
     end
   end
 
