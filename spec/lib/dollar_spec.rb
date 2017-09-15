@@ -5,10 +5,13 @@ require 'dollar'
 
 describe Dollar do
   describe '#times' do
-    subject { dollar.times(2).amount }
+    subject(:times) { dollar.times(2) }
 
     let(:dollar) { described_class.new(5) }
 
-    it { is_expected.to eq 10 }
+    specify do
+      times
+      expect(dollar.amount).to eq 10
+    end
   end
 end
