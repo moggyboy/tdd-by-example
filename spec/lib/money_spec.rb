@@ -2,6 +2,8 @@
 
 require 'spec_helper'
 require 'money'
+require 'dollar'
+require 'franc'
 
 describe Money do
   let(:money) { described_class.new(5) }
@@ -21,6 +23,12 @@ describe Money do
       expect(money > described_class.new(4)).to be true
       expect(money >= described_class.new(6)).to be false
       expect(money > described_class.new(6)).to be false
+
+      expect(Dollar.new(5) == Dollar.new(5)).to be true
+      expect(Dollar.new(5) == Dollar.new(6)).to be false
+      expect(Franc.new(5) == Franc.new(5)).to be true
+      expect(Franc.new(5) == Franc.new(6)).to be false
+      expect(Franc.new(5) == Dollar.new(5)).to be false
     end
   end
 end

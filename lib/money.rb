@@ -15,6 +15,7 @@ class Money
 
   def <=>(other)
     raise ArgumentError unless other.is_a?(Money)
+    return nil unless other.is_a?(self.class)
 
     other_amount = other.amount
     if @amount < other_amount
