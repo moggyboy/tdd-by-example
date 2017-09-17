@@ -26,4 +26,8 @@ class Money
       0
     end
   end
+
+  def currency
+    raise NotImplementedError
+  end
 end
