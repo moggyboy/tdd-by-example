@@ -10,7 +10,7 @@ class Money
   end
 
   def times(multiplier)
-    self.class.new(@amount * multiplier)
+    Money.new(@amount * multiplier)
   end
 
   def <=>(other)
