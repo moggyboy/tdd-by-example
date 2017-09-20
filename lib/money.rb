@@ -32,12 +32,4 @@ class Money < Expression
     rate = bank.rate(currency, to_currency)
     Money.new(amount / rate, 'USD')
   end
-
-  def plus(addend)
-    Sum.new(self, addend)
-  end
-
-  def times(addend)
-    Product.new(self, addend)
-  end
 end
