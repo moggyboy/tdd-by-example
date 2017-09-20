@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Money
+require 'expression'
+
+class Money < Expression
   include Comparable
 
   attr_reader :amount, :currency
