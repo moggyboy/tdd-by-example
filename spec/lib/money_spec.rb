@@ -20,9 +20,7 @@ describe Money do
     specify { expect(money >= described_class.new(6, 'USD')).to be false }
     specify { expect(money > described_class.new(6, 'USD')).to be false }
 
-    specify { expect(MoneyFactory.dollar(5) == MoneyFactory.dollar(5)).to be true }
     specify { expect(MoneyFactory.dollar(5) == MoneyFactory.dollar(6)).to be false }
-    specify { expect(MoneyFactory.franc(5) == MoneyFactory.franc(5)).to be true }
     specify { expect(MoneyFactory.franc(5) == MoneyFactory.franc(6)).to be false }
     specify { expect(MoneyFactory.franc(5) == MoneyFactory.dollar(5)).to be false }
   end
