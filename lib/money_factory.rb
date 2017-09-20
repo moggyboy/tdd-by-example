@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
-require 'dollar'
-require 'franc'
-
 class MoneyFactory
   def self.dollar(amount)
-    Dollar.new(amount)
+    Money.new(amount, 'USD')
   end
 
   def self.franc(amount)
-    Franc.new(amount)
+    Money.new(amount, 'CHF')
   end
 end

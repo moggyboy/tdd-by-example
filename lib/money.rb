@@ -3,19 +3,20 @@
 class Money
   include Comparable
 
-  attr_reader :amount
+  attr_reader :amount, :currency
 
-  def initialize(amount)
+  def initialize(amount, currency)
     @amount = amount
+    @currency = currency
   end
 
   def times(multiplier)
-    Money.new(@amount * multiplier)
+    Money.new(@amount * multiplier, currency)
   end
 
   def <=>(other)
     raise ArgumentError unless other.is_a?(Money)
-    return nil unless other.is_a?(self.class)
+    return nil unless other.currency == self.currency
 
     other_amount = other.amount
     if @amount < other_amount
@@ -25,9 +26,5 @@ class Money
     else
       0
     end
-  end
-
-  def currency
-    raise NotImplementedError
   end
 end
