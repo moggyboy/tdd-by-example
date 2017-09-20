@@ -29,4 +29,10 @@ describe Money do
     specify { expect(MoneyFactory.dollar(1).currency).to eq 'USD' }
     specify { expect(MoneyFactory.franc(1).currency).to eq 'CHF' }
   end
+
+  describe '#plus' do
+    specify do
+      expect(MoneyFactory.dollar(5).plus(MoneyFactory.dollar(5))).to eq MoneyFactory.dollar(10)
+    end
+  end
 end

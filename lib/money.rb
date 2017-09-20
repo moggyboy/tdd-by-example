@@ -16,7 +16,7 @@ class Money
 
   def <=>(other)
     raise ArgumentError unless other.is_a?(Money)
-    return nil unless other.currency == self.currency
+    return nil unless other.currency == currency
 
     other_amount = other.amount
     if @amount < other_amount
@@ -26,5 +26,10 @@ class Money
     else
       0
     end
+  end
+
+  def plus(money)
+    raise ArgumentError if money.currency != currency
+    Money.new(amount + money.amount, currency)
   end
 end
