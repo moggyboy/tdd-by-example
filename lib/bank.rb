@@ -2,6 +2,6 @@
 
 class Bank
   def reduce(expression, currency)
-    Money.new(10, 'USD')
+    expression.reduce(currency)
   end
 end

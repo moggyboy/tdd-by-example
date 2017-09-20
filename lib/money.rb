@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'expression'
+require 'sum'
 
 class Money < Expression
   include Comparable
@@ -30,8 +31,11 @@ class Money < Expression
     end
   end
 
-  def plus(money)
-    raise ArgumentError if money.currency != currency
-    Money.new(amount + money.amount, currency)
+  def plus(addend)
+    Sum.new(self, addend)
+  end
+
+  def reduce(_currency)
+    self
   end
 end

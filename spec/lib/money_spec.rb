@@ -3,6 +3,7 @@
 require 'spec_helper'
 require 'money'
 require 'money_factory'
+require 'sum'
 
 describe Money do
   let(:money) { described_class.new(5, 'USD') }
@@ -32,7 +33,10 @@ describe Money do
 
   describe '#plus' do
     specify do
-      expect(MoneyFactory.dollar(5).plus(MoneyFactory.dollar(5))).to eq MoneyFactory.dollar(10)
+      five = MoneyFactory.dollar(5)
+      sum = five.plus(five)
+      expect(sum.augend).to eq five
+      expect(sum.addend).to eq five
     end
   end
 end
