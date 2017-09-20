@@ -29,5 +29,26 @@ describe Bank do
       reduced = bank.reduce(sum, 'USD')
       expect(reduced).to eq Money.new(6, 'USD')
     end
+
+    specify do
+      bank.add_rate('CHF', 'USD', 2)
+      result = bank.reduce(MoneyFactory.franc(2), 'USD')
+      expect(result).to eq MoneyFactory.dollar(1)
+    end
+
+    specify do
+      bank.add_rate('CHF', 'USD', 5)
+      result = bank.reduce(MoneyFactory.franc(5), 'USD')
+      expect(result).to eq MoneyFactory.dollar(1)
+    end
+  end
+
+  context '#rate' do
+    specify do
+      bank.add_rate('CHF', 'USD', 5)
+      expect(bank.rate('CHF', 'USD')).to eq 5
+      expect(bank.rate('USD', 'USD')).to eq 1
+      expect(bank.rate('CHF', 'CHF')).to eq 1
+    end
   end
 end
