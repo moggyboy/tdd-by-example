@@ -4,13 +4,15 @@ require 'spec_helper'
 require 'money'
 require 'money_factory'
 require 'sum'
+require 'bank'
 
 describe Money do
   let(:money) { described_class.new(5, 'USD') }
+  let(:bank) { Bank.new }
 
   describe '#times' do
-    specify { expect(money.times(2)).to eq described_class.new(10, 'USD') }
-    specify { expect(money.times(3)).to eq described_class.new(15, 'USD') }
+    specify { expect(bank.reduce(money.times(2), 'USD')).to eq described_class.new(10, 'USD') }
+    specify { expect(bank.reduce(money.times(3), 'USD')).to eq described_class.new(15, 'USD') }
   end
 
   describe '#<=>' do

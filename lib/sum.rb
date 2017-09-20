@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'expression'
+
 class Sum < Expression
   attr_reader :augend, :addend
 
@@ -9,7 +11,7 @@ class Sum < Expression
   end
 
   def reduce(bank, currency)
-    amount = augend.amount + addend.amount
+    amount = augend.reduce(bank, currency).amount + addend.reduce(bank, currency).amount
     Money.new(amount, currency)
   end
 end

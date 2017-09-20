@@ -2,6 +2,7 @@
 
 require 'expression'
 require 'sum'
+require 'product'
 
 class Money < Expression
   include Comparable
@@ -11,10 +12,6 @@ class Money < Expression
   def initialize(amount, currency)
     @amount = amount
     @currency = currency
-  end
-
-  def times(multiplier)
-    Money.new(@amount * multiplier, currency)
   end
 
   def <=>(other)
@@ -31,12 +28,16 @@ class Money < Expression
     end
   end
 
+  def reduce(bank, to_currency)
+    rate = bank.rate(currency, to_currency)
+    Money.new(amount / rate, 'USD')
+  end
+
   def plus(addend)
     Sum.new(self, addend)
   end
 
-  def reduce(bank, to_currency)
-    rate = bank.rate(currency, to_currency)
-    Money.new(amount / rate, 'USD')
+  def times(addend)
+    Product.new(self, addend)
   end
 end
