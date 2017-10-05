@@ -1,14 +1,24 @@
 # frozen_string_literal: true
 
-class WasRun
-  attr_reader :was_run
+require 'test_case'
+
+class WasRun < TestCase
+  attr_reader :log
 
   def initialize(method_name)
-    @method_name = method_name
-    @was_run = false
+    super(method_name)
+    @log = []
+  end
+
+  def set_up
+    @log << 'set_up'
+  end
+
+  def tear_down
+    @log << 'tear_down'
   end
 
   def test_method
-    @was_run = true
+    @log << 'test_method'
   end
 end
