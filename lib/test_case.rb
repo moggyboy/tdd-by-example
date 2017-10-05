@@ -8,10 +8,16 @@ class TestCase
   end
 
   def run
+    test_result = TestResult.new
     set_up
-    send(method_name.to_sym)
+    begin
+      send(method_name.to_sym)
+      test_result.test_passed
+    rescue
+      test_result.test_failed
+    end
     tear_down
-    TestResult.new
+    test_result
   end
 
   protected

@@ -20,4 +20,12 @@ describe TestCaseTest do
       test_case_test.run
     end
   end
+
+  describe '#test_failed_result' do
+    let(:method_name) { 'test_failed_result' }
+
+    specify do
+      test_case_test.run
+    end
+  end
 end
