@@ -7,8 +7,7 @@ class TestCase
     @method_name = method_name
   end
 
-  def run
-    test_result = TestResult.new
+  def run(test_result)
     set_up
     begin
       send(method_name.to_sym)
@@ -17,7 +16,6 @@ class TestCase
       test_result.test_failed
     end
     tear_down
-    test_result
   end
 
   protected
